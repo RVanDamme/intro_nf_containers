@@ -1,5 +1,7 @@
 # Singularity and Nextflow a usage demo
 
+### Why Nextflow
+
 Having all in one tools is great for analysis, but something better is to have automated workflows.
 Why would we bother to run a tool wait for it to be done, run the second one, then the third one and so on, when we can simply compose them in a script that will do it for us?
 Creating workflows is a long, annoying process when done in bash that requires some skills and that will be highly specific to the system it is supposed to run on. In addition, in today's science we have many challenges to face to provide the best science we can.
@@ -17,13 +19,13 @@ We will use Nextflow today as it is one of the leading language, who works on ev
 The best example is the [NF-core](https://nf-co.re/) group, which is a community effort to collect a curated set of pipelines using nextflow.
 They have extensive manual, guides and configuration making it the best to work on anykind of system.
 
+### Why singularity
+
 Despite having all the computing compiled in a workflow, there is challenges remaining. Amongst which managing software and dependencies for all of your analysis is a complex and time consuming process.
 Fortunately, people are developing "containers".
 
 A container is a light weight "box" that contains the code and all the dependencies of an application.
 It can be use in any system in a fast and reliable way as only the minimal requirement (code, runtime, system tools and library) are present in the container. To run a container a container manager is required whether it is Docker, Singularity, Podman, LXD or another one.
-
-![Representation of containers on the system](https://www.docker.com/wp-content/themes/divi-child/assets/images/product/product-body-background.svg =250x250)
 
 Physical shipping containers and software containers work by the same principles. Container ships are built to carry containers and anyone who package goods in a container according to shipping standards know that the container can be carried by any ship designed to carry them. 
 In addition harbours are built to quickly load and unload containers from the ship and during transport each container protect the goods inside meaning that it doesn’t matter what is shipped alongside of it on the same ship.
