@@ -343,3 +343,11 @@ Or
 ```sh
 nextflow run nf-core/genomeassembler -r master -profile test,singularity --outdir <OUTDIR> -with-report report.html -with-timeline timeline.html
 ```
+
+# Additional links and reading:
+* All [nf-core pipelines](https://nf-co.re/pipelines)
+* How to write your own nextflow pipeline a [complete course](https://training.seqera.io/)
+* More [pipelines](https://github.com/nextflow-io/awesome-nextflow)
+
+
+![A scientist getting zap after pushing a button will try again, a normal person will not](https://imgs.xkcd.com/comics/the_difference.png)
