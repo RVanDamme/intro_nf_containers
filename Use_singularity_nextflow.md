@@ -1,20 +1,6 @@
 # Singularity and Nextflow a usage demo
 
-
-Managing software and dependencies for all of your analysis is a complex and time consuming process.
-Fortunately, people are developing "containers".
-
-A container is a light weight "box" that contains the code and all the dependencies of an application.
-It can be use in any system in a fast and reliable way as only the minimal requirement (code, runtime, system tools and library) are present in the container. To run a container a container manager is required whether it is Docker, Singularity, Podman, LXD or another one.
-
-Physical shipping containers and software containers work by the same principles. Container ships are built to carry containers and anyone who package goods in a container according to shipping standards know that the container can be carried by any ship designed to carry them. 
-In addition harbours are built to quickly load and unload containers from the ship and during transport each container protect the goods inside meaning that it doesn’t matter what is shipped alongside of it on the same ship.
-
-Standardisation in containers also make bioinformatics portable and shareable. Imagine for example if all the equipment on this ship was stacked without containers and you then want to move it all by truck from the harbour, disentangling the pile and distributing it over the trucks would be a nightmare. With containers everyone know the specifications of carrying a containers and you can put each container on a truck (next pixture). With containerbased bioinformatics I can do the same thing. My laptop got all the software necessary to run Singularity containers, it is not as powerful as a big server but I can load a container, run the software inside of it and when I am done I can unload it and load the next container necessary for my workflow to run. 
-
-[Singularity](https://docs.sylabs.io/guides/3.5/user-guide/introduction.html) is one of the container platflorm that allows you to create and run containers, if you want to search for containers to use I advise [Biocontainers](https://biocontainers.pro/) and [Dockerhub](https://hub.docker.com/) (all working with singularity).
-
-Having all in one tools is great for analysis and reproducibility, but something better is to have automated workflows.
+Having all in one tools is great for analysis, but something better is to have automated workflows.
 Why would we bother to run a tool wait for it to be done, run the second one, then the third one and so on, when we can simply compose them in a script that will do it for us?
 Creating workflows is a long, annoying process when done in bash that requires some skills and that will be highly specific to the system it is supposed to run on. In addition, in today's science we have many challenges to face to provide the best science we can.
 
@@ -31,14 +17,27 @@ We will use Nextflow today as it is one of the leading language, who works on ev
 The best example is the [NF-core](https://nf-co.re/) group, which is a community effort to collect a curated set of pipelines using nextflow.
 They have extensive manual, guides and configuration making it the best to work on anykind of system.
 
+Despite having all the computing compiled in a workflow, there is challenges remaining. Amongst which managing software and dependencies for all of your analysis is a complex and time consuming process.
+Fortunately, people are developing "containers".
 
+A container is a light weight "box" that contains the code and all the dependencies of an application.
+It can be use in any system in a fast and reliable way as only the minimal requirement (code, runtime, system tools and library) are present in the container. To run a container a container manager is required whether it is Docker, Singularity, Podman, LXD or another one.
+
+![Representation of containers on the system](https://www.docker.com/wp-content/themes/divi-child/assets/images/product/product-body-background.svg)
+
+Physical shipping containers and software containers work by the same principles. Container ships are built to carry containers and anyone who package goods in a container according to shipping standards know that the container can be carried by any ship designed to carry them. 
+In addition harbours are built to quickly load and unload containers from the ship and during transport each container protect the goods inside meaning that it doesn’t matter what is shipped alongside of it on the same ship.
+
+Standardisation in containers also make bioinformatics portable and shareable. Imagine for example if all the equipment on this ship was stacked without containers and you then want to move it all by truck from the harbour, disentangling the pile and distributing it over the trucks would be a nightmare. With containers everyone know the specifications of carrying a containers and you can put each container on a truck (next pixture). With containerbased bioinformatics I can do the same thing. My laptop got all the software necessary to run Singularity containers, it is not as powerful as a big server but I can load a container, run the software inside of it and when I am done I can unload it and load the next container necessary for my workflow to run. 
+
+[Singularity](https://docs.sylabs.io/guides/3.5/user-guide/introduction.html) is one of the container platflorm that allows you to create and run containers, if you want to search for containers to use I advise [Biocontainers](https://biocontainers.pro/) and [Dockerhub](https://hub.docker.com/) (all working with singularity).
 
 ## Singularity installation
 
 User guide: https://docs.sylabs.io/guides/3.10/user-guide/
 Admin guide: https://docs.sylabs.io/guides/latest/admin-guide/index.html 
 
-### Linux
+### Linux and WSL
 
 #### Install Dependencies
 
@@ -322,11 +321,11 @@ Run the classic Hello world by entering the following command:
 
 ## Running your first nf-core pipeline
 
-Since we have a time limit, we will run the genomeassembler pipeline. It is an unrelease non finished pipeline but simple enough that it should run on any computer as a demonstration pipeline.
+Since we have a time limit, we will run the genomeassembler pipeline. It is an **unreleased non finished** pipeline but simple enough that it should run on any computer as a demonstration pipeline.
 
 https://nf-co.re/genomeassembler 
 
-First we will read the main page adn quick start, then read the usage doc and parametes and finally run the following command:
+First we will read the main page and quick start, then read the usage doc and parameters and finally run the following command:
 
 ```sh
 nextflow run nf-core/genomeassembler -r master -profile test,singularity --outdir <OUTDIR>
@@ -343,6 +342,21 @@ Or
 ```sh
 nextflow run nf-core/genomeassembler -r master -profile test,singularity --outdir <OUTDIR> -with-report report.html -with-timeline timeline.html
 ```
+
+## More
+
+Of course nf-core is not composed only of non-working incomplete pipelines.
+Here is some exemple of what you can do:
+
+* [nf-core/eager](https://nf-co.re/eager) for research in ancient DNA in craddle of humanity
+* [nf-core/methylseq](https://nf-co.re/methylseq) for research in methylation site of cassava plant infected or not
+* [nf-core/demultiplex](https://nf-co.re/demultiplex) for demultiplexing ngs Illumina data
+* [nf-core/nanoseq](https://nf-co.re/nanoseq) for demultiplecing and QC and Alignment of Nanopore data
+* [nf-core/rnaseq](https://nf-co.re/rnaseq) for expression in heatstroke cattle vs non heatstroke
+* [nf-core/ampliseq](https://nf-co.re/ampliseq) for amplicon sequencing analysis
+* [nf-core/mag](https://nf-co.re/mag) and soon to be updated MUFFIN for metagenomics
+* [MUFFIN](https://github.com/RVanDamme/MUFFIN)
+
 
 # Additional links and reading:
 * All [nf-core pipelines](https://nf-co.re/pipelines)
