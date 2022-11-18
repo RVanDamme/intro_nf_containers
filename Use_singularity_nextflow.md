@@ -23,7 +23,7 @@ Fortunately, people are developing "containers".
 A container is a light weight "box" that contains the code and all the dependencies of an application.
 It can be use in any system in a fast and reliable way as only the minimal requirement (code, runtime, system tools and library) are present in the container. To run a container a container manager is required whether it is Docker, Singularity, Podman, LXD or another one.
 
-![Representation of containers on the system](https://www.docker.com/wp-content/themes/divi-child/assets/images/product/product-body-background.svg)
+![Representation of containers on the system](https://www.docker.com/wp-content/themes/divi-child/assets/images/product/product-body-background.svg =250x250)
 
 Physical shipping containers and software containers work by the same principles. Container ships are built to carry containers and anyone who package goods in a container according to shipping standards know that the container can be carried by any ship designed to carry them. 
 In addition harbours are built to quickly load and unload containers from the ship and during transport each container protect the goods inside meaning that it doesn’t matter what is shipped alongside of it on the same ship.
